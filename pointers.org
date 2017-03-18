@@ -1,0 +1,19 @@
+This file documents the information regarding this computer's built in pointers. Getting touch and stick to work was a pain in the ass because a pissing match between the kernel developers and the Alps/Synaptics maintainers wound up creating a situation where some hardware was not recognized during the period running up to the release of Ubuntu 16.04 LTS. This means Ubuntu 16.04 shipped in a state where things had not been sorted out and an early kernel update 16.04.1 (the long term kernel) broke stuff which had not been fixed in the interim.
+
+The Dell Precision 7510 fell into that category and wound up being a corner case. So when purchased new in October 2016, the drivers for touch and stick were rather misconfigured. It took me about two months or so to get something usable. Much of that time was trying to avoid /'using the command line'/ and hoping for a magical graphical user interface that did not exist. There were several re-installs of Ubuntu of various flavors and an installation of Fedora that still has some lingering effects.
+
+Eventually, I bit the bullet and /read the fucking manual/ and stackExchange and blogs and got something working while waiting for the patch which was in the pipeline right at the time I bought the 7510...the patch being in the pipeline also gave me false hope in the possibility that some other Linux distro might fix the problem. To say the landscape 'was complicated' does not quite capture the essence of Linux moving to =system.md= for boot and =libinput= for handling input devices. 
+
+And that's what I was stepping into. Information might or might not be out of date on ArchWiki or Ubuntu's documentation or a blog for those reasons or it might be out of date because it referred to an Ubuntu from ten or more releases (or even years) ago.
+
+Eventually I got something working by modifying files at
+#+BEGIN_SRC sh
+  cd /usr/share/X11/xorg.conf.d
+#+END_SRC
+To see which ones were touched use to get sorted by file modification dates:
+#+BEGIN_SRC sh
+  ls -l -c
+#+END_SRC
+Then this week <2017-03-18 Sat> the patch hit Ubuntu 16.04 (that's after about five months of ownership) and now I am using =Alp/PS2 ALPS Dual Point Touchpad= and =Alp/PS2 ALPS Dual Point Stick=. And it only broke things in one way: it swapped the stick from device 13 to device 14 and the touchpad from 14 to 13. The cool part was I figured most of it out pretty fast because I had spent so much quality time with =xinput=. The reason I'm writing this up today is because I eventually rebooted and had to solve things more permanently and could not remember where the hell the configuration files were.
+
+That's life in the year before the year of the Linux Desktop™.
